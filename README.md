@@ -200,8 +200,11 @@ What is the output order of the following code?
 
 ```javascript
 console.log("1");
+
 Promise.resolve().then(() => console.log("2"));
+
 setTimeout(() => console.log("3"), 0);
+
 console.log("4");
 ```
 
@@ -233,13 +236,13 @@ console.log("4");
 What is the output order of this code?
 
 ```javascript
-async function test() {
-  console.log("1");
-  await Promise.resolve();
-  console.log("2");
-}
-test();
-console.log("3");
+console.log("1");
+
+Promise.resolve()
+  .then(() => console.log("2"))
+  .then(() => console.log("3"));
+
+console.log("4");
 ```
 
 **Options:**
@@ -272,6 +275,7 @@ What will be logged?
 Promise.resolve()
   .then(() => console.log("1"))
   .then(() => console.log("2"));
+
 Promise.resolve()
   .then(() => console.log("3"))
   .then(() => console.log("4"));
@@ -308,10 +312,12 @@ What is the output sequence?
 
 ```javascript
 setTimeout(() => console.log("1"), 0);
+
 new Promise((resolve) => {
   console.log("2");
   resolve();
 }).then(() => console.log("3"));
+
 console.log("4");
 ```
 
@@ -344,12 +350,15 @@ What will be the output?
 
 ```javascript
 const promise1 = Promise.resolve("First");
+
 const promise2 = new Promise((resolve) =>
   setTimeout(() => resolve("Second"), 0)
 );
 
 promise1.then((result) => console.log(result));
+
 promise2.then((result) => console.log(result));
+
 console.log("Third");
 ```
 
@@ -382,8 +391,11 @@ What is the execution order?
 
 ```javascript
 queueMicrotask(() => console.log("1"));
+
 Promise.resolve().then(() => console.log("2"));
+
 setTimeout(() => console.log("3"), 0);
+
 console.log("4");
 ```
 
@@ -418,7 +430,9 @@ const promise = new Promise((resolve) => {
   resolve("2");
   console.log("3");
 });
+
 promise.then(console.log);
+
 console.log("4");
 ```
 
@@ -492,8 +506,11 @@ What will be output?
 
 ```javascript
 setTimeout(() => console.log("1"), 0);
+
 setImmediate(() => console.log("2"));
+
 process.nextTick(() => console.log("3"));
+
 console.log("4");
 ```
 
@@ -534,6 +551,7 @@ Promise.resolve()
   })
   .catch(() => console.log("2"))
   .then(() => console.log("3"));
+
 console.log("4");
 ```
 
@@ -605,9 +623,3 @@ console.log("5");
 4. Error is thrown, .catch handler prints error message: `console.log("3")`
 5. Final .then prints the resolved value: `console.log("4")`
 </details>
-
----
-
-## Answer Key
-
-(Hidden - To be provided separately to teachers)
