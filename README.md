@@ -8,17 +8,20 @@ This practice exam contains questions about JavaScript runtime behavior, event l
 
 What is the Call Stack in JavaScript?
 
-a) A data structure that stores variables and function declarations during code execution
-b) A LIFO (Last In, First Out) data structure that tracks function calls and their execution context
-c) A queue that manages asynchronous operations in JavaScript
-d) A list of all available Web APIs in the browser
+**Options:**
+
+- a) A data structure that stores variables and function declarations during code execution
+- b) A LIFO (Last In, First Out) data structure that tracks function calls and their execution context
+- c) A queue that manages asynchronous operations in JavaScript
+- d) A list of all available Web APIs in the browser
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) A LIFO (Last In, First Out) data structure that tracks function calls and their execution context**
+**Correct Answer:** b) A LIFO (Last In, First Out) data structure that tracks function calls and their execution context
 
-Explanation: The Call Stack is a fundamental part of JavaScript's execution context. It follows the Last In, First Out (LIFO) principle, where the most recently added function call is the first to be removed. When a function is called, it's pushed onto the stack; when it returns, it's popped off. This mechanism keeps track of where the program is in its execution.
+**Explanation:**  
+The Call Stack is a fundamental part of JavaScript's execution context. It follows the Last In, First Out (LIFO) principle, where the most recently added function call is the first to be removed. When a function is called, it's pushed onto the stack; when it returns, it's popped off. This mechanism keeps track of where the program is in its execution.
 
 </details>
 
@@ -26,17 +29,20 @@ Explanation: The Call Stack is a fundamental part of JavaScript's execution cont
 
 What is the Event Loop's main responsibility?
 
-a) Execute JavaScript code line by line
-b) Store variables and function declarations
-c) Check if the call stack is empty and move tasks from callback queue to the call stack
-d) Handle network requests directly
+**Options:**
+
+- a) Execute JavaScript code line by line
+- b) Store variables and function declarations
+- c) Check if the call stack is empty and move tasks from callback queue to the call stack
+- d) Handle network requests directly
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: c) Check if the call stack is empty and move tasks from callback queue to the call stack**
+**Correct Answer:** c) Check if the call stack is empty and move tasks from callback queue to the call stack
 
-Explanation: The Event Loop's primary job is to monitor both the Call Stack and the Callback Queue. When the Call Stack is empty, it takes the first task from the Callback Queue and pushes it onto the Call Stack for execution. This process ensures that async operations don't block the main thread and are executed in the correct order.
+**Explanation:**  
+The Event Loop's primary job is to monitor both the Call Stack and the Callback Queue. When the Call Stack is empty, it takes the first task from the Callback Queue and pushes it onto the Call Stack for execution. This process ensures that async operations don't block the main thread and are executed in the correct order.
 
 </details>
 
@@ -44,17 +50,20 @@ Explanation: The Event Loop's primary job is to monitor both the Call Stack and 
 
 Which of the following is NOT part of the browser's JavaScript runtime environment?
 
-a) Call Stack
-b) Web APIs
-c) Java Virtual Machine
-d) Callback Queue
+**Options:**
+
+- a) Call Stack
+- b) Web APIs
+- c) Java Virtual Machine
+- d) Callback Queue
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: c) Java Virtual Machine**
+**Correct Answer:** c) Java Virtual Machine
 
-Explanation: The Java Virtual Machine (JVM) is not part of the JavaScript runtime environment. The browser's JavaScript runtime includes the Call Stack (for executing code), Web APIs (for browser-provided functionality), the Callback Queue (for managing async callbacks), and the Event Loop (for coordinating between them).
+**Explanation:**  
+The Java Virtual Machine (JVM) is not part of the JavaScript runtime environment. The browser's JavaScript runtime includes the Call Stack (for executing code), Web APIs (for browser-provided functionality), the Callback Queue (for managing async callbacks), and the Event Loop (for coordinating between them).
 
 </details>
 
@@ -62,17 +71,20 @@ Explanation: The Java Virtual Machine (JVM) is not part of the JavaScript runtim
 
 What is the Callback Queue?
 
-a) A stack that stores all callback functions
-b) A queue that stores callback functions ready to be executed
-c) A database of Web API functions
-d) A list of all variables in the program
+**Options:**
+
+- a) A stack that stores all callback functions
+- b) A queue that stores callback functions ready to be executed
+- c) A database of Web API functions
+- d) A list of all variables in the program
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) A queue that stores callback functions ready to be executed**
+**Correct Answer:** b) A queue that stores callback functions ready to be executed
 
-Explanation: The Callback Queue (also known as Task Queue) is where completed asynchronous operations' callbacks wait to be executed. It follows the First In, First Out (FIFO) principle. When an async operation completes, its callback is added to the queue, and the Event Loop will move it to the Call Stack when appropriate.
+**Explanation:**  
+The Callback Queue (also known as Task Queue) is where completed asynchronous operations' callbacks wait to be executed. It follows the First In, First Out (FIFO) principle. When an async operation completes, its callback is added to the queue, and the Event Loop will move it to the Call Stack when appropriate.
 
 </details>
 
@@ -80,17 +92,20 @@ Explanation: The Callback Queue (also known as Task Queue) is where completed as
 
 What is the primary difference between microtasks and macrotasks?
 
-a) Microtasks are faster to execute than macrotasks
-b) Microtasks have higher priority and execute before the next macrotask
-c) Macrotasks are always related to DOM operations
-d) Microtasks can only be created using async/await
+**Options:**
+
+- a) Microtasks are faster to execute than macrotasks
+- b) Microtasks have higher priority and execute before the next macrotask
+- c) Macrotasks are always related to DOM operations
+- d) Microtasks can only be created using async/await
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) Microtasks have higher priority and execute before the next macrotask**
+**Correct Answer:** b) Microtasks have higher priority and execute before the next macrotask
 
-Explanation: Microtasks (like Promise callbacks and queueMicrotask) have higher priority than macrotasks (like setTimeout, setInterval). After each macrotask, the JavaScript engine will execute ALL queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
+**Explanation:**  
+Microtasks (like Promise callbacks and queueMicrotask) have higher priority than macrotasks (like setTimeout, setInterval). After each macrotask, the JavaScript engine will execute ALL queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
 
 </details>
 
@@ -98,17 +113,20 @@ Explanation: Microtasks (like Promise callbacks and queueMicrotask) have higher 
 
 Which of these is a microtask?
 
-a) setTimeout callback
-b) setInterval callback
-c) Promise.then() callback
-d) addEventListener callback
+**Options:**
+
+- a) setTimeout callback
+- b) setInterval callback
+- c) Promise.then() callback
+- d) addEventListener callback
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: c) Promise.then() callback**
+**Correct Answer:** c) Promise.then() callback
 
-Explanation: Promise.then() callbacks are microtasks. They are processed in the microtask queue, which has priority over the macrotask queue. setTimeout, setInterval, and addEventListener callbacks are all macrotasks and are processed in the macrotask queue.
+**Explanation:**  
+Promise.then() callbacks are microtasks. They are processed in the microtask queue, which has priority over the macrotask queue. setTimeout, setInterval, and addEventListener callbacks are all macrotasks and are processed in the macrotask queue.
 
 </details>
 
@@ -116,17 +134,20 @@ Explanation: Promise.then() callbacks are microtasks. They are processed in the 
 
 What happens when a Promise is created?
 
-a) The executor function is added to the microtask queue
-b) The executor function runs immediately and synchronously
-c) The executor function runs after all synchronous code
-d) The executor function runs in the next event loop tick
+**Options:**
+
+- a) The executor function is added to the microtask queue
+- b) The executor function runs immediately and synchronously
+- c) The executor function runs after all synchronous code
+- d) The executor function runs in the next event loop tick
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) The executor function runs immediately and synchronously**
+**Correct Answer:** b) The executor function runs immediately and synchronously
 
-Explanation: When a Promise is created using `new Promise(executor)`, the executor function runs synchronously during the Promise construction. This is why you can see console.logs from inside Promise executors before other synchronous code. Only the .then(), .catch(), and .finally() handlers are scheduled as microtasks.
+**Explanation:**  
+When a Promise is created using `new Promise(executor)`, the executor function runs synchronously during the Promise construction. This is why you can see console.logs from inside Promise executors before other synchronous code. Only the .then(), .catch(), and .finally() handlers are scheduled as microtasks.
 
 </details>
 
@@ -134,17 +155,20 @@ Explanation: When a Promise is created using `new Promise(executor)`, the execut
 
 What is the purpose of the Web APIs in the browser?
 
-a) To execute JavaScript code
-b) To provide additional functionality not included in the JavaScript engine
-c) To store global variables
-d) To manage the event loop
+**Options:**
+
+- a) To execute JavaScript code
+- b) To provide additional functionality not included in the JavaScript engine
+- c) To store global variables
+- d) To manage the event loop
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) To provide additional functionality not included in the JavaScript engine**
+**Correct Answer:** b) To provide additional functionality not included in the JavaScript engine
 
-Explanation: Web APIs are provided by the browser to extend JavaScript's capabilities. They include features like DOM manipulation, AJAX (fetch), setTimeout, and geolocation. These APIs are not part of the JavaScript engine itself but are provided by the browser environment to allow JavaScript to interact with the outside world.
+**Explanation:**  
+Web APIs are provided by the browser to extend JavaScript's capabilities. They include features like DOM manipulation, AJAX (fetch), setTimeout, and geolocation. These APIs are not part of the JavaScript engine itself but are provided by the browser environment to allow JavaScript to interact with the outside world.
 
 </details>
 
@@ -153,24 +177,27 @@ Explanation: Web APIs are provided by the browser to extend JavaScript's capabil
 ### Question 9
 
 What is the output order of the following code?
-\`\`\`javascript
-console.log('1');
-Promise.resolve().then(() => console.log('2'));
-setTimeout(() => console.log('3'), 0);
-console.log('4');
-\`\`\`
 
-a) 1, 2, 3, 4
-b) 1, 4, 2, 3
-c) 1, 4, 3, 2
-d) 4, 1, 2, 3
+```javascript
+console.log("1");
+Promise.resolve().then(() => console.log("2"));
+setTimeout(() => console.log("3"), 0);
+console.log("4");
+```
+
+**Options:**
+
+- a) 1, 2, 3, 4
+- b) 1, 4, 2, 3
+- c) 1, 4, 3, 2
+- d) 4, 1, 2, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) 1, 4, 2, 3**
+**Correct Answer:** b) 1, 4, 2, 3
 
-Explanation:
+**Explanation:**
 
 1. First, synchronous code executes: `console.log('1')` and `console.log('4')`
 2. The Promise.then() callback is queued as a microtask
@@ -182,15 +209,16 @@ Explanation:
 ### Question 10
 
 What is the output order of this code?
-\`\`\`javascript
+
+```javascript
 async function test() {
-console.log('1');
-await Promise.resolve();
-console.log('2');
+  console.log("1");
+  await Promise.resolve();
+  console.log("2");
 }
 test();
-console.log('3');
-\`\`\`
+console.log("3");
+```
 
 a) 1, 2, 3
 b) 1, 3, 2
@@ -213,14 +241,15 @@ Explanation:
 ### Question 11
 
 What will be logged?
-\`\`\`javascript
+
+```javascript
 Promise.resolve()
-.then(() => console.log('1'))
-.then(() => console.log('2'));
+  .then(() => console.log("1"))
+  .then(() => console.log("2"));
 Promise.resolve()
-.then(() => console.log('3'))
-.then(() => console.log('4'));
-\`\`\`
+  .then(() => console.log("3"))
+  .then(() => console.log("4"));
+```
 
 a) 1, 2, 3, 4
 b) 1, 3, 2, 4
@@ -246,14 +275,15 @@ Explanation:
 ### Question 12
 
 What is the output sequence?
-\`\`\`javascript
-setTimeout(() => console.log('1'), 0);
-new Promise(resolve => {
-console.log('2');
-resolve();
-}).then(() => console.log('3'));
-console.log('4');
-\`\`\`
+
+```javascript
+setTimeout(() => console.log("1"), 0);
+new Promise((resolve) => {
+  console.log("2");
+  resolve();
+}).then(() => console.log("3"));
+console.log("4");
+```
 
 a) 1, 2, 3, 4
 b) 2, 4, 3, 1
@@ -277,14 +307,17 @@ Explanation:
 ### Question 13
 
 What will be the output?
-\`\`\`javascript
-const promise1 = Promise.resolve('First');
-const promise2 = new Promise(resolve => setTimeout(() => resolve('Second'), 0));
 
-promise1.then(result => console.log(result));
-promise2.then(result => console.log(result));
-console.log('Third');
-\`\`\`
+```javascript
+const promise1 = Promise.resolve("First");
+const promise2 = new Promise((resolve) =>
+  setTimeout(() => resolve("Second"), 0)
+);
+
+promise1.then((result) => console.log(result));
+promise2.then((result) => console.log(result));
+console.log("Third");
+```
 
 a) First, Second, Third
 b) Third, First, Second
@@ -308,12 +341,13 @@ Explanation:
 ### Question 14
 
 What is the execution order?
-\`\`\`javascript
-queueMicrotask(() => console.log('1'));
-Promise.resolve().then(() => console.log('2'));
-setTimeout(() => console.log('3'), 0);
-console.log('4');
-\`\`\`
+
+```javascript
+queueMicrotask(() => console.log("1"));
+Promise.resolve().then(() => console.log("2"));
+setTimeout(() => console.log("3"), 0);
+console.log("4");
+```
 
 a) 4, 1, 2, 3
 b) 4, 2, 1, 3
@@ -335,15 +369,16 @@ Explanation:
 ### Question 15
 
 What gets logged?
-\`\`\`javascript
-const promise = new Promise(resolve => {
-console.log('1');
-resolve('2');
-console.log('3');
+
+```javascript
+const promise = new Promise((resolve) => {
+  console.log("1");
+  resolve("2");
+  console.log("3");
 });
 promise.then(console.log);
-console.log('4');
-\`\`\`
+console.log("4");
+```
 
 a) 1, 3, 4, 2
 b) 1, 2, 3, 4
@@ -365,22 +400,23 @@ Explanation:
 ### Question 16
 
 What is the correct order of logs?
-\`\`\`javascript
+
+```javascript
 Promise.resolve()
-.then(() => {
-console.log('1');
-return Promise.resolve('2');
-})
-.then(result => {
-console.log(result);
-return Promise.reject('3');
-})
-.catch(error => {
-console.log(error);
-return '4';
-})
-.then(result => console.log(result));
-\`\`\`
+  .then(() => {
+    console.log("1");
+    return Promise.resolve("2");
+  })
+  .then((result) => {
+    console.log(result);
+    return Promise.reject("3");
+  })
+  .catch((error) => {
+    console.log(error);
+    return "4";
+  })
+  .then((result) => console.log(result));
+```
 
 a) 1, 2, 3, 4
 b) 4, 1, 2, 3
@@ -403,12 +439,13 @@ Explanation:
 ### Question 17
 
 What will be output?
-\`\`\`javascript
-setTimeout(() => console.log('1'), 0);
-setImmediate(() => console.log('2'));
-process.nextTick(() => console.log('3'));
-console.log('4');
-\`\`\`
+
+```javascript
+setTimeout(() => console.log("1"), 0);
+setImmediate(() => console.log("2"));
+process.nextTick(() => console.log("3"));
+console.log("4");
+```
 
 a) 4, 3, 1, 2
 b) 4, 1, 2, 3
@@ -434,16 +471,17 @@ Note: This is Node.js specific behavior. In browsers, setImmediate is not availa
 ### Question 18
 
 What is the execution sequence?
-\`\`\`javascript
+
+```javascript
 Promise.resolve()
-.then(() => {
-console.log('1');
-throw new Error('error');
-})
-.catch(() => console.log('2'))
-.then(() => console.log('3'));
-console.log('4');
-\`\`\`
+  .then(() => {
+    console.log("1");
+    throw new Error("error");
+  })
+  .catch(() => console.log("2"))
+  .then(() => console.log("3"));
+console.log("4");
+```
 
 a) 4, 1, 2, 3
 b) 1, 2, 3, 4
@@ -458,7 +496,7 @@ d) 1, 3, 2, 4
 Explanation:
 
 1. Synchronous code executes: `console.log('4')`
-2. First .then executes: `console.log('1')` and throws error
+2. First .then executes: `console.log('1')`
 3. Error is caught: `console.log('2')`
 4. Final .then executes: `console.log('3')`
 </details>
@@ -466,27 +504,28 @@ Explanation:
 ### Question 19
 
 What will be logged?
-\`\`\`javascript
-const promise1 = Promise.resolve('1');
-const promise2 = Promise.resolve('2');
+
+```javascript
+const promise1 = Promise.resolve("1");
+const promise2 = Promise.resolve("2");
 
 promise1
-.then(result => {
-console.log(result);
-return promise2;
-})
-.then(result => {
-console.log(result);
-throw new Error('3');
-})
-.catch(error => {
-console.log(error.message);
-return Promise.resolve('4');
-})
-.then(result => console.log(result));
+  .then((result) => {
+    console.log(result);
+    return promise2;
+  })
+  .then((result) => {
+    console.log(result);
+    throw new Error("3");
+  })
+  .catch((error) => {
+    console.log(error.message);
+    return Promise.resolve("4");
+  })
+  .then((result) => console.log(result));
 
-console.log('5');
-\`\`\`
+console.log("5");
+```
 
 a) 5, 1, 2, 3, 4
 b) 1, 2, 3, 4, 5
