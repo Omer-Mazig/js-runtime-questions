@@ -242,22 +242,24 @@ test();
 console.log("3");
 ```
 
-a) 1, 2, 3
-b) 1, 3, 2
-c) 3, 1, 2
-d) 2, 1, 3
+**Options:**
+
+- a) 1, 2, 3
+- b) 1, 3, 2
+- c) 3, 1, 2
+- d) 2, 1, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) 1, 3, 2**
+**Correct Answer:** b) 1, 3, 2
 
-Explanation:
+**Explanation:**
 
-1. The async function starts executing synchronously: `console.log('1')`
+1. The async function starts executing synchronously: `console.log("1")`
 2. At the await, the rest of the function is scheduled as a microtask
-3. Synchronous code continues: `console.log('3')`
-4. After synchronous code, the microtask executes: `console.log('2')`
+3. Synchronous code continues: `console.log("3")`
+4. After synchronous code, the microtask executes: `console.log("2")`
 </details>
 
 ---
@@ -275,25 +277,27 @@ Promise.resolve()
   .then(() => console.log("4"));
 ```
 
-a) 1, 2, 3, 4
-b) 1, 3, 2, 4
-c) 3, 4, 1, 2
-d) 4, 3, 2, 1
+**Options:**
+
+- a) 1, 2, 3, 4
+- b) 1, 3, 2, 4
+- c) 3, 4, 1, 2
+- d) 4, 3, 2, 1
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) 1, 3, 2, 4**
+**Correct Answer:** b) 1, 3, 2, 4
 
-Explanation:
+**Explanation:**
 
 1. Both Promise chains start resolving
 2. First .then() callbacks from both chains are queued as microtasks
-3. First chain's first .then executes: `console.log('1')`
-4. Second chain's first .then executes: `console.log('3')`
+3. First chain's first .then executes: `console.log("1")`
+4. Second chain's first .then executes: `console.log("3")`
 5. Second .then callbacks are queued
-6. First chain's second .then executes: `console.log('2')`
-7. Second chain's second .then executes: `console.log('4')`
+6. First chain's second .then executes: `console.log("2")`
+7. Second chain's second .then executes: `console.log("4")`
 </details>
 
 ---
@@ -311,23 +315,25 @@ new Promise((resolve) => {
 console.log("4");
 ```
 
-a) 1, 2, 3, 4
-b) 2, 4, 3, 1
-c) 4, 1, 2, 3
-d) 2, 3, 4, 1
+**Options:**
+
+- a) 1, 2, 3, 4
+- b) 2, 4, 3, 1
+- c) 4, 1, 2, 3
+- d) 2, 3, 4, 1
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) 2, 4, 3, 1**
+**Correct Answer:** b) 2, 4, 3, 1
 
-Explanation:
+**Explanation:**
 
-1. Promise constructor executes synchronously: `console.log('2')`
+1. Promise constructor executes synchronously: `console.log("2")`
 2. setTimeout callback is scheduled as a macrotask
-3. Synchronous code executes: `console.log('4')`
-4. Promise.then microtask executes: `console.log('3')`
-5. Finally, the setTimeout macrotask executes: `console.log('1')`
+3. Synchronous code executes: `console.log("4")`
+4. Promise.then microtask executes: `console.log("3")`
+5. Finally, the setTimeout macrotask executes: `console.log("1")`
 </details>
 
 ---
@@ -347,23 +353,25 @@ promise2.then((result) => console.log(result));
 console.log("Third");
 ```
 
-a) First, Second, Third
-b) Third, First, Second
-c) First, Third, Second
-d) Third, Second, First
+**Options:**
+
+- a) First, Second, Third
+- b) Third, First, Second
+- c) First, Third, Second
+- d) Third, Second, First
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: b) Third, First, Second**
+**Correct Answer:** b) Third, First, Second
 
-Explanation:
+**Explanation:**
 
 1. promise1 is created as an already resolved promise
 2. promise2 is created with a setTimeout
-3. Synchronous code executes: `console.log('Third')`
-4. Microtask from promise1.then executes: `console.log('First')`
-5. After the timeout, promise2 resolves and its .then executes: `console.log('Second')`
+3. Synchronous code executes: `console.log("Third")`
+4. Microtask from promise1.then executes: `console.log("First")`
+5. After the timeout, promise2 resolves and its .then executes: `console.log("Second")`
 </details>
 
 ---
@@ -379,21 +387,23 @@ setTimeout(() => console.log("3"), 0);
 console.log("4");
 ```
 
-a) 4, 1, 2, 3
-b) 4, 2, 1, 3
-c) 1, 2, 3, 4
-d) 3, 4, 1, 2
+**Options:**
+
+- a) 4, 1, 2, 3
+- b) 4, 2, 1, 3
+- c) 1, 2, 3, 4
+- d) 3, 4, 1, 2
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: a) 4, 1, 2, 3**
+**Correct Answer:** a) 4, 1, 2, 3
 
-Explanation:
+**Explanation:**
 
-1. Synchronous code executes: `console.log('4')`
-2. Microtasks execute in order of queueing: `console.log('1')`, then `console.log('2')`
-3. Finally, the setTimeout macrotask executes: `console.log('3')`
+1. Synchronous code executes: `console.log("4")`
+2. Microtasks execute in order of queueing: `console.log("1")`, then `console.log("2")`
+3. Finally, the setTimeout macrotask executes: `console.log("3")`
 </details>
 
 ---
@@ -412,21 +422,23 @@ promise.then(console.log);
 console.log("4");
 ```
 
-a) 1, 3, 4, 2
-b) 1, 2, 3, 4
-c) 4, 1, 2, 3
-d) 1, 4, 2, 3
+**Options:**
+
+- a) 1, 3, 4, 2
+- b) 1, 2, 3, 4
+- c) 4, 1, 2, 3
+- d) 1, 4, 2, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: a) 1, 3, 4, 2**
+**Correct Answer:** a) 1, 3, 4, 2
 
-Explanation:
+**Explanation:**
 
-1. Promise constructor executes synchronously: `console.log('1')` and `console.log('3')`
-2. Synchronous code continues: `console.log('4')`
-3. Promise.then microtask executes: `console.log('2')`
+1. Promise constructor executes synchronously: `console.log("1")` and `console.log("3")`
+2. Synchronous code continues: `console.log("4")`
+3. Promise.then microtask executes: `console.log("2")`
 </details>
 
 ---
@@ -452,22 +464,24 @@ Promise.resolve()
   .then((result) => console.log(result));
 ```
 
-a) 1, 2, 3, 4
-b) 4, 1, 2, 3
-c) 1, 3, 2, 4
-d) 2, 1, 3, 4
+**Options:**
+
+- a) 1, 2, 3, 4
+- b) 4, 1, 2, 3
+- c) 1, 3, 2, 4
+- d) 2, 1, 3, 4
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: a) 1, 2, 3, 4**
+**Correct Answer:** a) 1, 2, 3, 4
 
-Explanation:
+**Explanation:**
 
-1. First .then executes: `console.log('1')`
-2. Returns a resolved promise, next .then prints its value: `console.log('2')`
-3. Promise is rejected, .catch handler prints the error: `console.log('3')`
-4. .catch returns '4', final .then prints it: `console.log('4')`
+1. First .then executes: `console.log("1")`
+2. Returns a resolved promise, next .then prints its value: `console.log("2")`
+3. Promise is rejected, .catch handler prints the error: `console.log("3")`
+4. .catch returns "4", final .then prints it: `console.log("4")`
 </details>
 
 ---
@@ -483,22 +497,24 @@ process.nextTick(() => console.log("3"));
 console.log("4");
 ```
 
-a) 4, 3, 1, 2
-b) 4, 1, 2, 3
-c) 1, 2, 3, 4
-d) 4, 2, 3, 1
+**Options:**
+
+- a) 4, 3, 1, 2
+- b) 4, 1, 2, 3
+- c) 1, 2, 3, 4
+- d) 4, 2, 3, 1
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: a) 4, 3, 1, 2**
+**Correct Answer:** a) 4, 3, 1, 2
 
-Explanation:
+**Explanation:**
 
-1. Synchronous code executes: `console.log('4')`
-2. process.nextTick has highest priority: `console.log('3')`
-3. setTimeout macrotask executes: `console.log('1')`
-4. setImmediate executes last: `console.log('2')`
+1. Synchronous code executes: `console.log("4")`
+2. process.nextTick has highest priority: `console.log("3")`
+3. setTimeout macrotask executes: `console.log("1")`
+4. setImmediate executes last: `console.log("2")`
 
 Note: This is Node.js specific behavior. In browsers, setImmediate is not available.
 
@@ -521,22 +537,24 @@ Promise.resolve()
 console.log("4");
 ```
 
-a) 4, 1, 2, 3
-b) 1, 2, 3, 4
-c) 4, 2, 1, 3
-d) 1, 3, 2, 4
+**Options:**
+
+- a) 4, 1, 2, 3
+- b) 1, 2, 3, 4
+- c) 4, 2, 1, 3
+- d) 1, 3, 2, 4
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: a) 4, 1, 2, 3**
+**Correct Answer:** a) 4, 1, 2, 3
 
-Explanation:
+**Explanation:**
 
-1. Synchronous code executes: `console.log('4')`
-2. First .then executes: `console.log('1')`
-3. Error is caught: `console.log('2')`
-4. Final .then executes: `console.log('3')`
+1. Synchronous code executes: `console.log("4")`
+2. First .then executes: `console.log("1")`
+3. Error is caught: `console.log("2")`
+4. Final .then executes: `console.log("3")`
 </details>
 
 ---
@@ -567,23 +585,25 @@ promise1
 console.log("5");
 ```
 
-a) 5, 1, 2, 3, 4
-b) 1, 2, 3, 4, 5
-c) 5, 1, 2, 4, 3
-d) 1, 5, 2, 3, 4
+**Options:**
+
+- a) 5, 1, 2, 3, 4
+- b) 1, 2, 3, 4, 5
+- c) 5, 1, 2, 4, 3
+- d) 1, 5, 2, 3, 4
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer: a) 5, 1, 2, 3, 4**
+**Correct Answer:** a) 5, 1, 2, 3, 4
 
-Explanation:
+**Explanation:**
 
-1. Synchronous code executes first: `console.log('5')`
-2. First .then executes: `console.log('1')`
-3. Second .then executes with promise2's value: `console.log('2')`
-4. Error is thrown, .catch handler prints error message: `console.log('3')`
-5. Final .then prints the resolved value: `console.log('4')`
+1. Synchronous code executes first: `console.log("5")`
+2. First .then executes: `console.log("1")`
+3. Second .then executes with promise2's value: `console.log("2")`
+4. Error is thrown, .catch handler prints error message: `console.log("3")`
+5. Final .then prints the resolved value: `console.log("4")`
 </details>
 
 ---
