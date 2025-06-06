@@ -4,6 +4,8 @@ This practice exam contains questions about JavaScript runtime behavior, event l
 
 ## Theoretical Questions
 
+---
+
 ### Question 1
 
 What is the Call Stack in JavaScript?
@@ -24,6 +26,8 @@ What is the Call Stack in JavaScript?
 The Call Stack is a fundamental part of JavaScript's execution context. It follows the Last In, First Out (LIFO) principle, where the most recently added function call is the first to be removed. When a function is called, it's pushed onto the stack; when it returns, it's popped off. This mechanism keeps track of where the program is in its execution.
 
 </details>
+
+---
 
 ### Question 2
 
@@ -46,6 +50,8 @@ The Event Loop's primary job is to monitor both the Call Stack and the Callback 
 
 </details>
 
+---
+
 ### Question 3
 
 Which of the following is NOT part of the browser's JavaScript runtime environment?
@@ -66,6 +72,8 @@ Which of the following is NOT part of the browser's JavaScript runtime environme
 The Java Virtual Machine (JVM) is not part of the JavaScript runtime environment. The browser's JavaScript runtime includes the Call Stack (for executing code), Web APIs (for browser-provided functionality), the Callback Queue (for managing async callbacks), and the Event Loop (for coordinating between them).
 
 </details>
+
+---
 
 ### Question 4
 
@@ -88,6 +96,8 @@ The Callback Queue (also known as Task Queue) is where completed asynchronous op
 
 </details>
 
+---
+
 ### Question 5
 
 What is the primary difference between microtasks and macrotasks?
@@ -108,6 +118,8 @@ What is the primary difference between microtasks and macrotasks?
 Microtasks (like Promise callbacks and queueMicrotask) have higher priority than macrotasks (like setTimeout, setInterval). After each macrotask, the JavaScript engine will execute ALL queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
 
 </details>
+
+---
 
 ### Question 6
 
@@ -130,6 +142,8 @@ Promise.then() callbacks are microtasks. They are processed in the microtask que
 
 </details>
 
+---
+
 ### Question 7
 
 What happens when a Promise is created?
@@ -150,6 +164,8 @@ What happens when a Promise is created?
 When a Promise is created using `new Promise(executor)`, the executor function runs synchronously during the Promise construction. This is why you can see console.logs from inside Promise executors before other synchronous code. Only the .then(), .catch(), and .finally() handlers are scheduled as microtasks.
 
 </details>
+
+---
 
 ### Question 8
 
@@ -172,7 +188,11 @@ Web APIs are provided by the browser to extend JavaScript's capabilities. They i
 
 </details>
 
+---
+
 ## Code Execution Questions
+
+---
 
 ### Question 9
 
@@ -206,6 +226,8 @@ console.log("4");
 5. Finally, the macrotask (setTimeout) executes: `console.log('3')`
 </details>
 
+---
+
 ### Question 10
 
 What is the output order of this code?
@@ -237,6 +259,8 @@ Explanation:
 3. Synchronous code continues: `console.log('3')`
 4. After synchronous code, the microtask executes: `console.log('2')`
 </details>
+
+---
 
 ### Question 11
 
@@ -272,6 +296,8 @@ Explanation:
 7. Second chain's second .then executes: `console.log('4')`
 </details>
 
+---
+
 ### Question 12
 
 What is the output sequence?
@@ -303,6 +329,8 @@ Explanation:
 4. Promise.then microtask executes: `console.log('3')`
 5. Finally, the setTimeout macrotask executes: `console.log('1')`
 </details>
+
+---
 
 ### Question 13
 
@@ -338,6 +366,8 @@ Explanation:
 5. After the timeout, promise2 resolves and its .then executes: `console.log('Second')`
 </details>
 
+---
+
 ### Question 14
 
 What is the execution order?
@@ -365,6 +395,8 @@ Explanation:
 2. Microtasks execute in order of queueing: `console.log('1')`, then `console.log('2')`
 3. Finally, the setTimeout macrotask executes: `console.log('3')`
 </details>
+
+---
 
 ### Question 15
 
@@ -396,6 +428,8 @@ Explanation:
 2. Synchronous code continues: `console.log('4')`
 3. Promise.then microtask executes: `console.log('2')`
 </details>
+
+---
 
 ### Question 16
 
@@ -436,6 +470,8 @@ Explanation:
 4. .catch returns '4', final .then prints it: `console.log('4')`
 </details>
 
+---
+
 ### Question 17
 
 What will be output?
@@ -467,6 +503,8 @@ Explanation:
 Note: This is Node.js specific behavior. In browsers, setImmediate is not available.
 
 </details>
+
+---
 
 ### Question 18
 
@@ -500,6 +538,8 @@ Explanation:
 3. Error is caught: `console.log('2')`
 4. Final .then executes: `console.log('3')`
 </details>
+
+---
 
 ### Question 19
 
@@ -545,6 +585,8 @@ Explanation:
 4. Error is thrown, .catch handler prints error message: `console.log('3')`
 5. Final .then prints the resolved value: `console.log('4')`
 </details>
+
+---
 
 ## Answer Key
 
