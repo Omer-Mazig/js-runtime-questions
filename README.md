@@ -8,22 +8,22 @@ This practice exam contains questions about JavaScript runtime behavior, event l
 
 ### Question 1
 
-What is the Call Stack in JavaScript?
+What is the `Call Stack` in JavaScript?
 
 **Options:**
 
 - a) A data structure that stores variables and function declarations during code execution
-- b) A LIFO (Last In, First Out) data structure that tracks function calls and their execution context
+- b) A **LIFO** (Last In, First Out) data structure that tracks function calls and their execution context
 - c) A queue that manages asynchronous operations in JavaScript
-- d) A list of all available Web APIs in the browser
+- d) A list of available `Web APIs` in the browser
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) A LIFO (Last In, First Out) data structure that tracks function calls and their execution context
+**Correct Answer:** b) A **LIFO** (Last In, First Out) data structure that tracks function calls and their execution context
 
 **Explanation:**  
-The Call Stack is a fundamental part of JavaScript's execution context. It follows the Last In, First Out (LIFO) principle, where the most recently added function call is the first to be removed. When a function is called, it's pushed onto the stack; when it returns, it's popped off. This mechanism keeps track of where the program is in its execution.
+The `Call Stack` is a fundamental part of JavaScript's execution context. It follows the **Last In, First Out (LIFO)** principle, where the most recently added function call is the first to be removed. When a function is called, it's **pushed** onto the stack; when it returns, it's **popped** off. This mechanism keeps track of where the program is in its execution.
 
 </details>
 
@@ -31,22 +31,22 @@ The Call Stack is a fundamental part of JavaScript's execution context. It follo
 
 ### Question 2
 
-What is the Event Loop's main responsibility?
+What is the `Event Loop`'s main responsibility?
 
 **Options:**
 
 - a) Execute JavaScript code line by line
 - b) Store variables and function declarations
-- c) Check if the call stack is empty and move tasks from callback queue to the call stack
+- c) Check if the `Call Stack` is empty and move tasks from `Callback Queue` to the `Call Stack`
 - d) Handle network requests directly
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** c) Check if the call stack is empty and move tasks from callback queue to the call stack
+**Correct Answer:** c) Check if the `Call Stack` is empty and move tasks from `Callback Queue` to the `Call Stack`
 
 **Explanation:**  
-The Event Loop's primary job is to monitor the Call Stack, Microtask Queue, and Callback Queue. When the Call Stack is empty, it first processes all tasks in the Microtask Queue. Only after all microtasks are completed does it take the first task from the Callback Queue and push it onto the Call Stack for execution. This process ensures that async operations don't block the main thread and are executed in the correct priority order.
+The `Event Loop`'s primary job is to monitor the `Call Stack`, `Microtask Queue`, and `Callback Queue`. When the `Call Stack` is empty, it first processes all tasks in the `Microtask Queue`. Only after all microtasks are completed does it take the first task from the `Callback Queue` and push it onto the `Call Stack` for execution. This process ensures that async operations don't block the main thread and are executed in the correct priority order.
 
 </details>
 
@@ -115,7 +115,7 @@ What is the primary difference between microtasks and macrotasks?
 **Correct Answer:** b) Microtasks have higher priority and execute before the next macrotask
 
 **Explanation:**  
-Microtasks (like `Promise` callbacks and `queueMicrotask`) have higher priority than macrotasks (like `setTimeout`, `setInterval`). After each macrotask, the JavaScript engine will execute ALL queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
+**Microtasks** (like `Promise.then()`, `Promise.catch()`, `Promise.finally()`, and `queueMicrotask()`) have higher priority than **macrotasks** (like `setTimeout()`, `setInterval()`, `setImmediate()`). After each macrotask, the JavaScript engine will execute **ALL** queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
 
 </details>
 
