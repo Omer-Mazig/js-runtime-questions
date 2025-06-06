@@ -82,14 +82,14 @@ What is the Callback Queue?
 **Options:**
 
 - a) A stack that stores all callback functions
-- b) A queue that stores callback functions ready to be executed
-- c) A database of Web API functions
-- d) A list of all variables in the program
+- b) A database of Web API functions
+- c) A list of all variables in the program
+- d) A queue that stores callback functions ready to be executed
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) A queue that stores callback functions ready to be executed
+**Correct Answer:** d) A queue that stores callback functions ready to be executed
 
 **Explanation:**  
 The Callback Queue (also known as Task Queue) is where completed asynchronous operations' callbacks wait to be executed. It follows the First In, First Out (FIFO) principle. When an async operation completes, its callback is added to the queue, and the Event Loop will move it to the Call Stack when appropriate.
@@ -150,15 +150,15 @@ What happens when a Promise is created?
 
 **Options:**
 
-- a) The executor function is added to the microtask queue
-- b) The executor function runs immediately and synchronously
+- a) The executor function runs immediately and synchronously
+- b) The executor function is added to the microtask queue
 - c) The executor function runs after all synchronous code
 - d) The executor function runs in the next event loop tick
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) The executor function runs immediately and synchronously
+**Correct Answer:** a) The executor function runs immediately and synchronously
 
 **Explanation:**  
 When a Promise is created using `new Promise(executor)`, the executor function runs synchronously during the Promise construction. This is why you can see console.logs from inside Promise executors before other synchronous code. Only the .then(), .catch(), and .finally() handlers are scheduled as microtasks.
@@ -211,14 +211,14 @@ console.log("4");
 **Options:**
 
 - a) 1, 2, 3, 4
-- b) 1, 4, 2, 3
-- c) 1, 4, 3, 2
-- d) 4, 1, 2, 3
+- b) 1, 4, 3, 2
+- c) 4, 1, 2, 3
+- d) 1, 4, 2, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) 1, 4, 2, 3
+**Correct Answer:** d) 1, 4, 2, 3
 
 **Explanation:**
 
@@ -283,15 +283,15 @@ Promise.resolve()
 
 **Options:**
 
-- a) 1, 2, 3, 4
-- b) 1, 3, 2, 4
+- a) 1, 3, 2, 4
+- b) 1, 2, 3, 4
 - c) 3, 4, 1, 2
 - d) 4, 3, 2, 1
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) 1, 3, 2, 4
+**Correct Answer:** a) 1, 3, 2, 4
 
 **Explanation:**
 
@@ -329,14 +329,14 @@ console.log("4");
 **Options:**
 
 - a) 1, 2, 3, 4
-- b) 2, 4, 3, 1
-- c) 4, 1, 2, 3
+- b) 4, 1, 2, 3
+- c) 2, 4, 3, 1
 - d) 2, 3, 4, 1
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) 2, 4, 3, 1
+**Correct Answer:** c) 2, 4, 3, 1
 
 **Explanation:**
 
@@ -444,15 +444,15 @@ console.log("4");
 
 **Options:**
 
-- a) 1, 3, 4, 2
-- b) 1, 2, 3, 4
-- c) 4, 1, 2, 3
+- a) 1, 2, 3, 4
+- b) 4, 1, 2, 3
+- c) 1, 3, 4, 2
 - d) 1, 4, 2, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** a) 1, 3, 4, 2
+**Correct Answer:** c) 1, 3, 4, 2
 
 **Explanation:**
 
@@ -625,15 +625,15 @@ console.log("5");
 
 **Options:**
 
-- a) 5, 1, 2, 3, 4
-- b) 1, 2, 3, 4, 5
-- c) 5, 1, 2, 4, 3
-- d) 1, 5, 2, 3, 4
+- a) 1, 2, 3, 4, 5
+- b) 5, 1, 2, 4, 3
+- c) 1, 5, 2, 3, 4
+- d) 5, 1, 2, 3, 4
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** a) 5, 1, 2, 3, 4
+**Correct Answer:** d) 5, 1, 2, 3, 4
 
 **Explanation:**
 
