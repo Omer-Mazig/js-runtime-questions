@@ -46,7 +46,7 @@ What is the Event Loop's main responsibility?
 **Correct Answer:** c) Check if the call stack is empty and move tasks from callback queue to the call stack
 
 **Explanation:**  
-The Event Loop's primary job is to monitor both the Call Stack and the Callback Queue. When the Call Stack is empty, it takes the first task from the Callback Queue and pushes it onto the Call Stack for execution. This process ensures that async operations don't block the main thread and are executed in the correct order.
+The Event Loop's primary job is to monitor the Call Stack, Microtask Queue, and Callback Queue. When the Call Stack is empty, it first processes all tasks in the Microtask Queue. Only after all microtasks are completed does it take the first task from the Callback Queue and push it onto the Call Stack for execution. This process ensures that async operations don't block the main thread and are executed in the correct priority order.
 
 </details>
 
@@ -115,7 +115,7 @@ What is the primary difference between microtasks and macrotasks?
 **Correct Answer:** b) Microtasks have higher priority and execute before the next macrotask
 
 **Explanation:**  
-Microtasks (like Promise callbacks and queueMicrotask) have higher priority than macrotasks (like setTimeout, setInterval). After each macrotask, the JavaScript engine will execute ALL queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
+Microtasks (like `Promise` callbacks and `queueMicrotask`) have higher priority than macrotasks (like `setTimeout`, `setInterval`). After each macrotask, the JavaScript engine will execute ALL queued microtasks before moving on to the next macrotask. This ensures that Promise chains and similar operations complete before handling other async operations.
 
 </details>
 
@@ -184,7 +184,7 @@ What is the purpose of the Web APIs in the browser?
 **Correct Answer:** b) To provide additional functionality not included in the JavaScript engine
 
 **Explanation:**  
-Web APIs are provided by the browser to extend JavaScript's capabilities. They include features like DOM manipulation, AJAX (fetch), setTimeout, and geolocation. These APIs are not part of the JavaScript engine itself but are provided by the browser environment to allow JavaScript to interact with the outside world.
+Web APIs are provided by the browser to extend JavaScript's capabilities. They include features like DOM manipulation, AJAX (`fetch`), `setTimeout`, and geolocation. These APIs are not part of the JavaScript engine itself but are provided by the browser environment to allow JavaScript to interact with the outside world.
 
 </details>
 
@@ -247,22 +247,22 @@ console.log("4");
 
 **Options:**
 
-- a) 1, 2, 3
-- b) 1, 3, 2
-- c) 3, 1, 2
-- d) 2, 1, 3
+- a) 1, 2, 3, 4
+- b) 1, 4, 2, 3
+- c) 1, 4, 3, 2
+- d) 4, 1, 2, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** b) 1, 3, 2
+**Correct Answer:** b) 1, 4, 2, 3
 
 **Explanation:**
 
-1. The async function starts executing synchronously: `console.log("1")`
-2. At the await, the rest of the function is scheduled as a microtask
-3. Synchronous code continues: `console.log("3")`
-4. After synchronous code, the microtask executes: `console.log("2")`
+1. First, synchronous code executes: `console.log("1")` and `console.log("4")`
+2. The first .then() callback is queued as a microtask
+3. When executed, it logs "2" and returns, queueing the second .then()
+4. Finally, the second .then() executes, logging "3"
 </details>
 
 ---
@@ -295,13 +295,18 @@ Promise.resolve()
 
 **Explanation:**
 
-1. Both Promise chains start resolving
-2. First .then() callbacks from both chains are queued as microtasks
-3. First chain's first .then executes: `console.log("1")`
-4. Second chain's first .then executes: `console.log("3")`
-5. Second .then callbacks are queued
-6. First chain's second .then executes: `console.log("2")`
-7. Second chain's second .then executes: `console.log("4")`
+1. Both Promise chains start resolving immediately
+2. First `.then()` callbacks from both chains are queued in the same microtask tick
+3. In the first microtask tick:
+   - First chain's first `.then` executes: `console.log("1")`
+   - Second chain's first `.then` executes: `console.log("3")`
+4. Each `.then()` completion queues its next `.then()` in a new microtask tick
+5. In the next microtask tick:
+   - First chain's second `.then` executes: `console.log("2")`
+   - Second chain's second `.then` executes: `console.log("4")`
+
+This demonstrates how Promise chains queue their continuations in separate microtask ticks.
+
 </details>
 
 ---
@@ -378,9 +383,10 @@ console.log("Third");
 
 1. promise1 is created as an already resolved promise
 2. promise2 is created with a setTimeout
-3. Synchronous code executes: `console.log("Third")`
-4. Microtask from promise1.then executes: `console.log("First")`
-5. After the timeout, promise2 resolves and its .then executes: `console.log("Second")`
+3. Both .then handlers are queued, but won't execute yet
+4. Synchronous code executes: `console.log("Third")`
+5. Microtask from promise1.then executes: `console.log("First")`
+6. After the timeout completes, promise2 resolves and its .then executes: `console.log("Second")`
 </details>
 
 ---
@@ -492,10 +498,15 @@ Promise.resolve()
 
 **Explanation:**
 
-1. First .then executes: `console.log("1")`
-2. Returns a resolved promise, next .then prints its value: `console.log("2")`
-3. Promise is rejected, .catch handler prints the error: `console.log("3")`
-4. .catch returns "4", final .then prints it: `console.log("4")`
+1. First `.then` executes: `console.log("1")`
+2. It returns `Promise.resolve("2")`, which creates a new Promise and adds an extra microtask tick
+3. When that Promise resolves, the next `.then` prints its value: `console.log("2")`
+4. This `.then` rejects with "3", triggering the `.catch` handler: `console.log("3")`
+5. `.catch` returns "4" (automatically wrapped in a resolved Promise)
+6. Final `.then` prints the resolved value: `console.log("4")`
+
+Note: Returning `Promise.resolve()` in a `.then` handler creates an additional microtask tick, which is important for understanding Promise chaining behavior.
+
 </details>
 
 ---
@@ -507,33 +518,33 @@ What will be output?
 ```javascript
 setTimeout(() => console.log("1"), 0);
 
-setImmediate(() => console.log("2"));
+Promise.resolve().then(() => console.log("2"));
 
-process.nextTick(() => console.log("3"));
+requestAnimationFrame(() => console.log("3"));
 
 console.log("4");
 ```
 
 **Options:**
 
-- a) 4, 3, 1, 2
+- a) 4, 2, 3, 1
 - b) 4, 1, 2, 3
 - c) 1, 2, 3, 4
-- d) 4, 2, 3, 1
+- d) 4, 2, 1, 3
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** a) 4, 3, 1, 2
+**Correct Answer:** a) 4, 2, 3, 1
 
 **Explanation:**
 
-1. Synchronous code executes: `console.log("4")`
-2. process.nextTick has highest priority: `console.log("3")`
-3. setTimeout macrotask executes: `console.log("1")`
-4. setImmediate executes last: `console.log("2")`
+1. Synchronous code executes first: `console.log("4")`
+2. Promise.then microtask executes next: `console.log("2")`
+3. requestAnimationFrame callback executes before next frame: `console.log("3")`
+4. setTimeout macrotask executes last: `console.log("1")`
 
-Note: This is Node.js specific behavior. In browsers, setImmediate is not available.
+Note: This demonstrates the typical priority order in browsers: synchronous code → microtasks → animation frames → macrotasks. While `requestAnimationFrame` always executes after microtasks and before the next macrotask, its exact timing depends on the browser's rendering cycle and screen refresh rate (typically 60fps).
 
 </details>
 
@@ -620,6 +631,7 @@ console.log("5");
 1. Synchronous code executes first: `console.log("5")`
 2. First .then executes: `console.log("1")`
 3. Second .then executes with promise2's value: `console.log("2")`
-4. Error is thrown, .catch handler prints error message: `console.log("3")`
-5. Final .then prints the resolved value: `console.log("4")`
+4. Error is thrown, .catch handler prints just the error message (error.message): `console.log("3")`
+5. .catch returns a new resolved promise with value "4"
+6. Final .then prints this resolved value: `console.log("4")`
 </details>
