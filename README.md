@@ -560,30 +560,39 @@ Promise.resolve()
     console.log("1");
     throw new Error("error");
   })
-  .catch(() => console.log("2"))
-  .then(() => console.log("3"));
+  .then(() => console.log("2"))
+  .catch(() => console.log("3"))
+  .then(() => console.log("4"));
 
-console.log("4");
+console.log("5");
 ```
 
 **Options:**
 
-- a) 4, 1, 2, 3
-- b) 1, 2, 3, 4
-- c) 4, 2, 1, 3
-- d) 1, 3, 2, 4
+- a) 1, 3, 4, 5
+- b) 5, 1, 3, 4
+- c) 5, 1, 4, 3
+- d) 1, 5, 3, 4
 
 <details>
 <summary>View Answer and Explanation</summary>
 
-**Correct Answer:** a) 4, 1, 2, 3
+**Correct Answer:** b) 5, 1, 3, 4
 
 **Explanation:**
 
-1. Synchronous code executes: `console.log("4")`
-2. First .then executes: `console.log("1")`
-3. Error is caught: `console.log("2")`
-4. Final .then executes: `console.log("3")`
+The execution order follows these steps:
+
+1. First, synchronous code runs: `console.log("5")`
+2. Then the Promise chain starts:
+   - First `.then` executes: `console.log("1")`
+   - This `.then` throws an error
+   - The error causes the next `.then` to be skipped (so "2" is never logged)
+   - The error is caught by `.catch`: `console.log("3")`
+   - After the `.catch`, the chain continues normally: `console.log("4")`
+
+Note: When a `.then()` throws an error, the Promise chain immediately looks for the nearest `.catch()` handler, skipping any `.then()` handlers in between. That's why "2" is never logged - the error from the first `.then()` causes execution to jump directly to the `.catch()`.
+
 </details>
 
 ---
